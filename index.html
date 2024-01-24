@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Report App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Daily Report App</h1>
+
+        <!-- Page 1: Buttons for Departments -->
+        <div id="page1">
+            <h2>Departments:</h2>
+            <div class="department-buttons">
+                <button onclick="selectDepartment('CSE')">CSE</button>
+                <button onclick="selectDepartment('ECE')">ECE</button>
+                <button onclick="selectDepartment('ME')">ME</button>
+                <button onclick="selectDepartment('ROAI')">ROAI</button>
+                <button onclick="selectDepartment('P-cycle')">P-cycle</button>
+                <button onclick="selectDepartment('C-cycle')">C-cycle</button>
+            </div>
+        </div>
+
+        <!-- Page 2: Select Role -->
+        <div id="page2" style="display: none;">
+            <h2>Role:</h2>
+            <div class="role-options">
+                <button onclick="selectRole('HOD')">HOD</button>
+                <button onclick="selectRole('STAFF')">Staff</button>
+            </div>
+            <div class="buttons-container">
+                <button onclick="goBack()">Back</button>
+            </div>
+        </div>
+
+        <!-- Page 3: Sheet Form -->
+        <div id="page3" style="display: none;">
+            <h2>Fill out the sheet</h2>
+
+            <div id="options" style="display: none;" class="buttons-container">
+                <label for="date">Date:</label>
+                <input type="date" id="date" onchange="generateSheet()">
+
+                <div class="options-container">
+                    <label for="semester">Semester:</label>
+                    <select id="semester" onchange="generateSheet()">
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                </div>
+            </div>
+
+            <form onsubmit="saveData(); return false;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sl. No</th>
+                            <th>Time</th>
+                            <th>Staff</th>
+                            <th>Sub</th>
+                            <th>Topic</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sheetBody">
+                        <!-- Rows will be added dynamically using JavaScript -->
+                    </tbody>
+                </table>
+                <div class="buttons-container">
+                    <button type="submit">Save</button>
+                    <button onclick="goBack()">Back</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
